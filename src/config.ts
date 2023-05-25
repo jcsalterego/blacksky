@@ -10,7 +10,7 @@ export type AppContext = {
 export type Config = {
   port: number
   hostname: string
-  sqliteLocation: string
+  dblocation: string
   subscriptionEndpoint: string
   serviceDid: string
 }
