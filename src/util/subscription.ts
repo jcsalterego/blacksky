@@ -57,39 +57,35 @@ export abstract class FirehoseSubscriptionBase {
   async run() {
     dotenv.config()
 
-    try {
-      const handle = process.env.IDENTIFIER ?? ''
-      const password = process.env.PASSWORD ?? ''
-      const uri = process.env.BLACKSKYTHREAD ?? ''
+    const handle = process.env.IDENTIFIER ?? ''
+    const password = process.env.PASSWORD ?? ''
+    const uri = process.env.BLACKSKYTHREAD ?? ''
 
-      const agent = new AtpAgent({ service: 'https://bsky.social' })
-      await agent.login({ identifier: handle, password })
+    const agent = new AtpAgent({ service: 'https://bsky.social' })
+    await agent.login({ identifier: handle, password })
 
-      const blackskyThread = await agent.api.app.bsky.feed.getPostThread({uri})
-      const blacksky = new Set(parseReplies(blackskyThread.data.thread))
+    const blackskyThread = await agent.api.app.bsky.feed.getPostThread({uri})
+    const blacksky = new Set(parseReplies(blackskyThread.data.thread))
 
-      // TO DO: Maybe replace with an API
-      for (let add of DID_ADDITIONS) {
-        blacksky.add(add)
+    // TO DO: Maybe replace with an API
+    for (let add of DID_ADDITIONS) {
+      blacksky.add(add)
+    }
+    for (let rm of DID_REMOVALS) {
+      blacksky.delete(rm)
+    }
+
+    console.log(`👨🏿‍💻 ${blacksky.size} individuals in the #BlackSky skyline!`)
+    for await (const evt of this.sub) {
+      try {
+        await this.handleEvent(evt, blacksky)
+      } catch (err) {
+        console.error('repo subscription could not handle message', err)
       }
-      for (let rm of DID_REMOVALS) {
-        blacksky.delete(rm)
+      // update stored cursor every 20 events or so
+      if (isCommit(evt) && evt.seq % 20 === 0) {
+        await this.updateCursor(evt.seq)
       }
-
-      console.log(`👨🏿‍💻 ${blacksky.size} individuals in the #BlackSky skyline!`)
-      for await (const evt of this.sub) {
-        try {
-          await this.handleEvent(evt, blacksky)
-        } catch (err) {
-          console.error('repo subscription could not handle message', err)
-        }
-        // update stored cursor every 20 events or so
-        if (isCommit(evt) && evt.seq % 20 === 0) {
-          await this.updateCursor(evt.seq)
-        }
-      }
-    } catch (err) {
-      console.error('repo subscription could not handle message', err)
     }
   }
 
