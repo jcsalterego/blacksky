@@ -379,6 +379,7 @@ export const DID_ADDITIONS = [
   'did:plc:x4csnnfhtozael3ds3jhx6t4',
   'did:plc:mg2qgojvifizbrtycd6iwuex',
   'did:plc:cmbev7obnldneyyu2gejidrz',
+  'did:plc:klukddj2xf6mjinuyk7pmj5y',
 ]
 
 export const DID_REMOVALS = [
