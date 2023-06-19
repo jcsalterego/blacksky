@@ -25,21 +25,17 @@ const run = async () => {
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = 'Posts from the Black users of Bluesky. Use #Blacksky, ask to be added, or reply to the original thread (https://bsky.app/profile/did:plc:xgjcudwc5yk4z2uex5v6e7bl/post/3jtypsmfaoh2x). Open Source https://github.com/rudyfraser/blacksky/blob/6ed148f4f93426b00cae48eca50dfabcea8ce3f8/src/subscription.ts'
+  const description = 'Posts from the Black users of Bluesky. Use #BlackSky to include an individual post or ask to be added so all of your posts show up. Open Source https://github.com/rudyfraser/blacksky'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
   const avatar: string = 'assets/blacksky.jpg'
 
-  // -------------------------------------
-  // NO NEED TO TOUCH ANYTHING BELOW HERE
-  // -------------------------------------
-
   if (!process.env.FEEDGEN_SERVICE_DID && !process.env.FEEDGEN_HOSTNAME) {
     throw new Error('Please provide a hostname in the .env file')
   }
   const feedGenDid =
-    process.env.FEEDGEN_SERVICE_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
+     `did:web:${process.env.FEEDGEN_HOSTNAME}`
 
   // only update this if in a test environment
   const agent = new AtpAgent({ service: 'https://bsky.social' })
