@@ -32,7 +32,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
             hashtags.push(hashtag)
           })
 
-        return (isBlackSkyAuthor || hashtags.includes('#blacksky') || hashtags.includes('#blacktechsky')) && !isHellthread
+        return (isBlackSkyAuthor || hashtags.includes('#blacksky') || hashtags.includes('#blacktechsky') || hashtags.includes('#nbablacksky')) && !isHellthread
       })
       .map((create) => {
         // Create Blacksky posts in db
