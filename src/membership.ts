@@ -510,6 +510,8 @@ export const DID_ADDITIONS = [
   'did:plc:gsrl6i7kkdixpq7qg3etfrwk',
   'did:plc:ywvwurjlgzq46uyxezieo2wu',
   'did:plc:7uiy7gsqqwshhoyznorb5pvy',
+  'did:plc:pg2g3uqfvsuxw7hjzpcm67et',
+  'did:plc:zu6mvjy4tw2hwczg6slxhto2',
 ]
 
 export const DID_REMOVALS = [
@@ -521,4 +523,5 @@ export const DID_REMOVALS = [
   'did:plc:vt2iihswfztajz4xme6w4hiy',
   'did:plc:k5f642ejcpths5dehw7shm5t',
   'did:plc:sgjdd33jxtlcswz74f2khipx',
+  'did:plc:44yfbwp3ffsrqcdpxkeyvdbf',
 ]
