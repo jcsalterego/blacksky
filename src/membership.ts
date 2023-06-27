@@ -84,7 +84,6 @@ export const DID_ADDITIONS = [
   'did:plc:ciqqpyfnd2brriuxtjuv57xh',
   'did:plc:p2ahkyueh77xh3p3fvyhabi7',
   'did:plc:wjtbed3i2r7zki5a2bpuhurb',
-  'did:plc:2tjiu3ydbuaznxooclmxjetd',
   'did:plc:yeoi4if4g6xvt7ycwlql2zjg',
   'did:plc:tylusml32njglaw2lgiha35q',
   'did:plc:wtonzz3kejo5dbrnshen5und',
@@ -610,4 +609,5 @@ export const DID_REMOVALS = [
   'did:plc:k5f642ejcpths5dehw7shm5t',
   'did:plc:sgjdd33jxtlcswz74f2khipx',
   'did:plc:44yfbwp3ffsrqcdpxkeyvdbf',
+  'did:plc:2tjiu3ydbuaznxooclmxjetd',
 ]
