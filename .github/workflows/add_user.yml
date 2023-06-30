@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       did_or_handle:
-        description: "did_or_handle"
+        description: "DID (did:plc:) or Handle"
         required: true
 
 jobs:
